@@ -1,0 +1,21 @@
+# Benefits of using rust
+
+- Memory Safe
+  - Chromium Project has 70% vulnerabilities related to Memory.
+  - C/C++ doesn’t provide Memory Safety
+  - Python, JS provides Memory Safety but uses Garbage Collector
+  - Rust provides Memory Safety without using Garbage Collector.
+  - Rust achieves this functionality by making the language typed, thus the code won’t compile if any vulnerability will exist.
+- No Null Types or No Null Pointers
+  - Null Pointers in C are used as `*ptr = NULL`.
+  - Rust uses it’s rich type system to represent the absence of a value.
+- No Exceptions
+  - Rust Provides No Direct Referencing, No Pointers and No Pointer Exceptions.
+- Modern Package Manager
+  - It uses Package Manager named _Cargo_.
+- No Data Race
+  - A data race occurs when:
+    - two or more threads in a **single process** access the same memory location concurrently, and
+    - at least one of the accesses is for writing, and
+    - the threads are not using any exclusive locks to control their accesses to that memory
+  - Game Changer for writing Asynchronous Code

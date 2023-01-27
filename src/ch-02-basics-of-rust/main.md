@@ -1,0 +1,6 @@
+# Basics of Rust
+
+In this Chapter you'll learn about
+
+- ...
+- ...
