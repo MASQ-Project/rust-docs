@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Data Types - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html" class="active"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="data-types"><a class="header" href="#data-types">Data Types</a></h2>
+<ul>
+<li>Every value in Rust is of a certain <em>data type</em>, that makes Rust a <em>statically typed language</em>.</li>
+<li>It means Rust needs to know the type of all variables at compile time.</li>
+<li>Rust data types has two subsets:
+<ol>
+<li>Scalar</li>
+<li>Compound</li>
+</ol>
+</li>
+</ul>
+<h3 id="scalar-data-types"><a class="header" href="#scalar-data-types">Scalar Data Types</a></h3>
+<ul>
+<li>
+<p>Booleans</p>
+<ul>
+<li>Represented by <code>bool</code>, has two values <code>true</code> and <code>false</code>.</li>
+</ul>
+</li>
+<li>
+<p>Characters</p>
+<ul>
+<li>Represented by <code>char</code>, it always has space of <code>4</code> bytes or <code>32</code> bits instead of 1 byte.</li>
+<li>Characters are UTF-8 encoded, thus supports <code>'z', 'ℤ', '😻'</code>.</li>
+<li>Characters use single quotes and string uses double quotes.</li>
+</ul>
+</li>
+<li>
+<p>Integers</p>
+<ul>
+<li><code>u</code> means unsigned (only positive), <code>i</code> means signed (both positive &amp; negative)</li>
+<li>The size ranges from <code>8</code> bits to <code>128</code> bits.</li>
+<li>Range of Unsigned Integers is:
+$$ [0, 2^n - 1] $$</li>
+<li>Range of Signed Integer is:
+$$ [- 2^{n-1}, 2^{n-1} - 1]$$</li>
+<li>Examples, <code>u8</code>, <code>i8</code>, <code>u128</code>, <code>i128</code></li>
+<li>Rust also supports, <code>usize</code> and <code>isize</code> which means that it will take up space according to the architecture whether it is 32 bit or 64 bit.</li>
+<li>You may also represent integer literals in the below forms:</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Number literals</th><th>Example</th><th>Integer</th></tr></thead><tbody>
+<tr><td>Decimal</td><td>98_222</td><td>98222</td></tr>
+<tr><td>Hex</td><td>0xff</td><td>255</td></tr>
+<tr><td>Octal</td><td>0o77</td><td>63</td></tr>
+<tr><td>Binary</td><td>0b1111_0000</td><td>240</td></tr>
+<tr><td>Byte (u8 only)</td><td>b'A'</td><td>65</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>
+<p>Integer types default to <code>i32</code>.</p>
+</li>
+<li>
+<p>To read how Interger Overflow works in Rust, please follow <a href="https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-overflow">this link</a>.</p>
+</li>
+<li>
+<p>Division of integers gives floored value, <code>3 / 2 == 1</code>.</p>
+</li>
+<li>
+<p>Floats</p>
+<ul>
+<li>It has <code>f32</code> and <code>f64</code>, two floating data types for size <code>32</code> and <code>64</code>.</li>
+<li>Floating types default to <code>f64</code>.</li>
+<li>Division of floats give fractional result, <code>3.0 / 2. 0 = 1.5</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="compound-data-types"><a class="header" href="#compound-data-types">Compound Data Types</a></h3>
+<ul>
+<li>
+<p>There are two compound data types in Rust:</p>
+<ol>
+<li>Tuples</li>
+<li>Arrays</li>
+</ol>
+</li>
+</ul>
+<h4 id="tuples"><a class="header" href="#tuples">Tuples</a></h4>
+<ul>
+<li>
+<p>They can store number of values with different data types.</p>
+</li>
+<li>
+<p>They can't grow or shrink once declared.</p>
+</li>
+<li>
+<p>Tuples can be declared as follows:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let tup_with_types: (i32, f64, u8) = (500, 6.4, 1);
+let tup = (500, 6.4, 1);
+
+// Destructuring Tuples
+let (x, y, z) = tup;
+
+// Destructuing Tuples using .
+let x: (i32, f64, u8) = (500, 6.4, 1);
+let five_hundred = x.0;
+let six_point_four = x.1;
+let one = x.2;
+
+// Unit type tuple with unit value
+let unit_tup = ();
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="array"><a class="header" href="#array">Array</a></h4>
+<ul>
+<li>
+<p>They can store number of values with same data type.</p>
+</li>
+<li>
+<p>They can't grow or shrink once declared as their memory is allocated on stack.</p>
+</li>
+<li>
+<p>If you want a similar data structure that can grow or shrink then use Vectors.</p>
+</li>
+<li>
+<p>If you access an index of array that is greater than it's length, it'll result in <code>'index out of bounds'</code>.</p>
+</li>
+<li>
+<p>In other low level languages, this check is not done and they return an invalid memory.</p>
+</li>
+<li>
+<p>Arrays can be declared as follows:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Simple array declaration
+let a = [1, 2, 3, 4, 5];
+
+// Declaring array with type and size
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+
+// Declaring same value 3 for 5 elements
+let a = [3; 5];
+
+// Accessing Values of array
+let a = [1, 2, 3, 4, 5];
+let first = a[0];
+let second = a[1];
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="slicing-an-array"><a class="header" href="#slicing-an-array">Slicing an array</a></h4>
+<ul>
+<li>
+<p>It is possible to slice an array in Rust.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [1, 2, 3, 4, 5];
+
+let slice = &amp;a[1..3]; // It is of type &amp;[i32]
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="ranges"><a class="header" href="#ranges">Ranges</a></h4>
+<ul>
+<li>You can create a range with <code>..</code> operator.</li>
+<li>The following are equal:
+<ul>
+<li><code>1..5</code> ~ <code>1..=4</code></li>
+<li><code>0..4</code> ~ <code>..4</code></li>
+<li><code>1..len</code> ~ <code>1..</code></li>
+<li><code>0..len</code> ~ <code>..</code></li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

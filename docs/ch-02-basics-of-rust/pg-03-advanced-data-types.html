@@ -1,0 +1,521 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Advanced Data Types - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html" class="active"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="advanced-data-types"><a class="header" href="#advanced-data-types">Advanced Data Types</a></h2>
+<h4 id="strings"><a class="header" href="#strings">Strings</a></h4>
+<ul>
+<li>
+<p>They are represented in three types:</p>
+<ul>
+<li>
+<p><code>String</code> - A smart pointer.</p>
+</li>
+<li>
+<p><code>&amp;String</code> - Reference to a String.</p>
+</li>
+<li>
+<p><code>&amp;str</code> - String Slice</p>
+</li>
+<li>
+<p>Defining a String</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let string = String::new(&quot;127.0.0.1:8080&quot;); // It can grow and shrink
+let string_literal = &quot;1234&quot;; // It's memory is fixed at runtime
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Slicing a string</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let string = String::from(&quot;127.0.0.1:8080&quot;);
+let string_slice = &amp;string[10..14]; // We can also use &amp;string[10..]
+
+// We can also use
+let string_slice = &amp;string[10..]; // Give me everything after 10th byte not character
+let string_slice = &amp;string[..12]; // Give me everything upto 12th byte not character
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Rust uses UTF-8 encoding. So, prefer not to not pass integer values for slicing, as the slice function slices on the basis of bytes instead of characters.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let string = String::from(&quot;😀😃😄😁&quot;);
+let string_slice = &amp;string[..4];
+<span class="boring">}</span></code></pre></pre>
+<p>For this slice instead of returning 4 emojis, the rust will return 1 emoji because it takes 4 bytes to store an emoji.</p>
+<pre><code class="language-zsh">string_slice = &quot;😀&quot;
+</code></pre>
+</li>
+<li>
+<p>Strings in rust can dynamically grow or shrink.</p>
+</li>
+<li>
+<p>We can borrow an entire string by using this syntax</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let string = String::from(&quot;127.0.0.1:8080&quot;);
+let string_borrow: &amp;str = &amp;string;
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>This is how <code>let s1 = String::from(&quot;hello&quot;);</code> is stored in Rust:</p>
+<ul>
+<li>Left - Parts of String that are stored on the stack:
+<ol>
+<li>Pointer: Points to the memory that holds the contents of the string.</li>
+<li>Length: How much memory, in bytes, the contents of the String is currently using.</li>
+<li>Capacity: The total amount of memory, in bytes, that the String has received from the allocator.</li>
+</ol>
+</li>
+<li>Right - The memory on the heap that holds the contents.</li>
+</ul>
+<p><img src="https://doc.rust-lang.org/book/img/trpl04-01.svg" alt="Image" /></p>
+</li>
+</ul>
+<h2 id="string-slicing"><a class="header" href="#string-slicing">String Slicing</a></h2>
+<ul>
+<li>
+<p>Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection.</p>
+</li>
+<li>
+<p>A slice is a kind of reference, so it does not have ownership.</p>
+</li>
+<li>
+<p>Slices are represented by <code>&amp;str</code> and are <em>immutable</em>.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let s = String::from(&quot;hello world&quot;);
+
+    let hello = &amp;s[0..5]; // or you can use &amp;s[..5]
+    let world = &amp;s[6..11];
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>This will throw compile-time error:</p>
+<pre><pre class="playground"><code class="language-rust">// FAIL: You cannot clear the memory, to which some reference already exists
+fn main() {
+    let mut s = String::from(&quot;hello world&quot;);
+
+    let word = first_word(&amp;s); // Returns a &amp;str, which is a referenc to s
+
+    s.clear(); // error!
+
+    println!(&quot;the first word is: {}&quot;, word);
+}</code></pre></pre>
+</li>
+<li>
+<p>Thus, String Slices helps us write secure code by protecting the references to a string.</p>
+</li>
+<li>
+<p>Also string literals <code>let string_literal = &quot;hello&quot;;</code>, are string slices <code>&amp;str</code>, and are immutable.</p>
+</li>
+</ul>
+<p>Note: It is expected that the String only contains ASCII characters, because in case of UTF-8, if we try to slice between a multibyte character, it'll cause an error.</p>
+<ul>
+<li>
+<p>The correct way to use referencing is discussed int the section, <a href="#which-is-better-string-or-str">&quot;Which is better <code>&amp;String</code> or <code>&amp;str</code>?&quot;</a>.</p>
+</li>
+<li>
+<p>Difference between String, String Literal, String Slice</p>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>String</th><th>String Literal</th><th>String Slice</th><th>Reference to String</th></tr></thead><tbody>
+<tr><td>Definition</td><td><code>let string = String::from(&quot;some_string&quot;);</code></td><td><code>let string_literal = &quot;1234&quot;;</code></td><td><code>let string_slice = &amp;string[1..3]</code></td><td><code>let string_reference = &amp;string</code></td></tr>
+<tr><td>Representation</td><td><code>String</code></td><td><code>&amp;str</code></td><td><code>&amp;str</code></td><td><code>&amp;String</code></td></tr>
+<tr><td>Mutable</td><td>:white_check_mark:</td><td>:x:</td><td>:x:</td><td>:x:</td></tr>
+<tr><td>Memory Management</td><td>Heap (but deallocates when out of scope)</td><td>Heap (Points to binary)</td><td>Heap (Points to Binary)</td><td>Heap</td></tr>
+<tr><td>Use Cases</td><td>Taking Input, or any String Manipulation</td><td>Defining Constant Strings</td><td>Slicing and Borrowing</td><td>Borrowing</td></tr>
+</tbody></table>
+</div></li>
+</ul>
+<h4 id="strings-and-utf-8-encoding"><a class="header" href="#strings-and-utf-8-encoding">Strings and UTF-8 encoding</a></h4>
+<ul>
+<li>
+<p>Characters are represented by single inverted commas, and has <code>4 bytes</code> of storage. For Example, <code>'😀'</code>.</p>
+</li>
+<li>
+<p>String is not a collection of characters but collections of bytes.</p>
+</li>
+<li>
+<p>Rust has only one string type in the core language, which is the string slice <code>str</code> that is usually seen in its borrowed form <code>&amp;str</code>.</p>
+</li>
+<li>
+<p>String Slices are the references to some UTF-8 data stored somewhere else.</p>
+</li>
+<li>
+<p>String Literals are string slices when stored in program's binary.</p>
+</li>
+<li>
+<p>The <code>String</code> type, which is provided by Rust’s standard library rather than coded into the core language, is a growable, mutable, owned, UTF-8 encoded string type.</p>
+</li>
+<li>
+<p>When Rustaceans, call &quot;string in rust&quot;, they collectively mean:</p>
+<ul>
+<li><code>String</code></li>
+<li><code>&amp;str</code></li>
+</ul>
+</li>
+<li>
+<p>Both <code>String</code> and <code>&amp;str</code> are UTF-8 encoded.</p>
+</li>
+<li>
+<p>Creating the <code>String</code> type:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut s = String::new();
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>To create a <code>String</code> from some starting string:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = &quot;initial contents&quot;.to_string(); // This fn can be used on any type that implements Display trait
+let s = String::from(&quot;initial contents&quot;);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>It is possible to store any properly encoded data:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let hello = String::from(&quot;नमस्ते&quot;);
+let hello = String::from(&quot;안녕하세요&quot;);
+let hello = String::from(&quot;Здравствуйте&quot;);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Updating the String:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut s = String::from(&quot;foo&quot;);
+s.push_str(&quot;bar&quot;); // It takes string slice, hence doesn't takes ownership
+s.push('!'); // This fn only takes character as argument.
+// s will become &quot;foobar!&quot;
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Concatenating two strings with the <code>+</code> operator:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// '+' is a replacement of - fn add(self, s: &amp;str) -&gt; String {
+let s1 = String::from(&quot;Hello, &quot;);
+let s2 = String::from(&quot;world!&quot;);
+let s3 = s1 + &amp;s2; // note s1 has been moved here and can no longer be used
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<p>Note: In Rust, if we provide <code>&amp;str</code>, as a function's argument, it can accept both <code>&amp;String</code> and <code>&amp;str</code>. Rust uses a deref coercion, which here turns <code>&amp;s2</code> into <code>&amp;s2[..]</code>.</p>
+<ul>
+<li>
+<p>Combining multiple strings or formatting them:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = String::from(&quot;tic&quot;);
+let s2 = String::from(&quot;tac&quot;);
+let s3 = String::from(&quot;toe&quot;);
+
+// Method 1
+let s = s1 + &quot;-&quot; + &amp;s2 + &quot;-&quot; + &amp;s3;
+
+// Method 2
+let s = format!(&quot;{}-{}-{}&quot;, s1, s2, s3); // It works like println!() but returns String
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Indexing into Strings is not possible and results in error:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// FAIL: Strings can be indexed in Rust
+let s1 = String::from(&quot;hello&quot;);
+let h = s1[0]; // Won't work
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>How values are stored in string.</p>
+<ul>
+<li>
+<p>String is just a wrapper over <code>Vec&lt;u8&gt;</code>, this means <code>1 byte</code> of space for each element in the vector. Hence, if we want to save special charcters, then it may take more than one element to store the values.</p>
+</li>
+<li>
+<p>Let's consider following examples:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let hello = String::from(&quot;Hola&quot;); // Each character will take 1 byte of storage
+let hello = String::from(&quot;Здравствуйте&quot;); // Each character will take 2 bytes of storage
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Let's understand using the Hindi word <code>“नमस्ते”</code>:</p>
+<ul>
+<li>
+<p>As Bytes (the way <code>String</code> does using <code>u8</code> which ranges from <code>0</code> to <code>255</code>):</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>[224, 164, 168, 224, 164, 174, 224, 164, 184, 224, 165, 141, 224, 164, 164,
+224, 165, 135]
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>As Unicode Scalar Values (the way <code>char</code> does):</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>['न', 'म', 'स', '्', 'त', 'े']
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>As Grapheme Clusters (the way a Hindi speaker might do):</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>[&quot;न&quot;, &quot;म&quot;, &quot;स्&quot;, &quot;ते&quot;]
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Slicing Strings:</p>
+<ul>
+<li>
+<p>You need to provide the range of <code>bytes</code> to be sliced out of String. Again, not characters but bytes.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let hello = &quot;Здравствуйте&quot;; // Each character here is composed of 2 bytes
+
+let s = &amp;hello[0..4]; // It'll save first 4 bytes, `Зд`
+
+let will_panic = &amp;hello[0..1]; // It'll panic, as if invalid index was accessed in the vector.
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Iterating over strings:</p>
+<ul>
+<li>
+<p>You can iterate over the unicode scalar values or what <code>chars</code> might store:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for c in &quot;नमस्ते&quot;.chars() {
+    println!(&quot;{}&quot;, c);
+}
+
+// This is what it'll print
+न
+म
+स
+्
+त
+े
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>You can iterate over bytes also, the way <code>String</code> is stored in <code>Vec&lt;u8&gt;</code> format:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for b in &quot;नमस्ते&quot;.bytes() {
+    println!(&quot;{}&quot;, b);
+}
+
+// The output will be like
+224
+164
+// --snip--
+165
+135
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-02-basics-of-rust/pg-02-data-types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-02-basics-of-rust/pg-04-functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-02-basics-of-rust/pg-02-data-types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-02-basics-of-rust/pg-04-functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

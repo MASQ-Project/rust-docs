@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Concurrency - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html" class="active"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h2>
+<ul>
+<li>Difference between Concurrency and Parallel programming:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Concurrent Programming</th><th>Parallel Programming</th></tr></thead><tbody>
+<tr><td>Where different parts of program execute independently.</td><td>Where different parts of program execute at the same time.</td></tr>
+</tbody></table>
+</div>
+<h4 id="using-threads"><a class="header" href="#using-threads">Using Threads</a></h4>
+<ul>
+<li>
+<p>OS manages multiple processes at once.</p>
+</li>
+<li>
+<p>An executed program's code is run in a process.</p>
+</li>
+<li>
+<p>You can write programs such that there are indpendent pieces of code that run simultaneously.</p>
+</li>
+<li>
+<p>The features that run these parts simultaneously are called <em>threads</em>.</p>
+</li>
+<li>
+<p>Threads can run simultaneously, there’s no inherent guarantee about the order in which parts of your code on different threads will run. This causes the following problems:</p>
+<ul>
+<li><strong>Race conditions</strong>: Where threads are accessing data or resources in an inconsistent order.</li>
+<li><strong>Deadlocks</strong>: Where two threads are waiting for each other to finish using a resource the other thread has, preventing both threads from continuing.</li>
+<li><strong>Bugs</strong>: Hard to reproduce bugs, and only happens in certain situations.</li>
+</ul>
+</li>
+<li>
+<p>Many operating systems provide an API for creating new threads. This model where a language calls the operating system APIs to create threads is sometimes called <strong><em>1:1</em></strong>, meaning <em>1 OS Thread / 1 Language Thread</em>. The rust standard library provides the implementation for only <em>1:1</em>.</p>
+</li>
+<li>
+<p>Creating a new thread with <code>spawn</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::time::Duration;
+
+fn main() {
+  thread::spawn(|| {
+    for i in 1..10 {
+      println!(&quot;hi number {} from the spawned thread&quot;, i);
+      thread::sleep(Duration::from_millis(1));
+    }
+  });
+
+  for i in 1..5 {
+    println!(&quot;hi number {} from the main thread&quot;, i);
+    thread::sleep(Duration::from_millis(1));
+  }
+}</code></pre></pre>
+</li>
+<li>
+<p>The output will be:</p>
+<pre><code class="language-zsh">hi number 1 from the main thread
+hi number 1 from the spawned thread
+hi number 2 from the main thread
+hi number 2 from the spawned thread
+hi number 3 from the main thread
+hi number 3 from the spawned thread
+hi number 4 from the main thread
+hi number 4 from the spawned thread
+hi number 5 from the spawned thread
+</code></pre>
+</li>
+<li>
+<p>The spawned thread will automatically die as the main thread ends.</p>
+</li>
+<li>
+<p>That's why spawned thread ran 5 times, 4 times same as main thread and the 5th time, which is exectued to break the condition for the main thread's for loop condition.</p>
+</li>
+<li>
+<p>Which thread will execute first is not guaranteed, you may notice in our case, the main thread runs first, even though according to the code, the spawned thread should have ran first.</p>
+</li>
+<li>
+<p>In fact, there is not even a guarantee that this spwaned thread will even run at all.</p>
+</li>
+<li>
+<p>We can make sure that the spawned thread will definitely run and will execute completely, by using the <code>join()</code></p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    // Let's store the thread in a variable
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!(&quot;hi number {} from the spawned thread!&quot;, i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!(&quot;hi number {} from the main thread!&quot;, i);
+        thread::sleep(Duration::from_millis(1));
+    }
+
+    // This will make sure that the spawned thread
+    // finishes before the main thread ends
+    handle.join().unwrap();
+}</code></pre></pre>
+</li>
+<li>
+<p>The two threads will now continue alternating, but the main thread will wait because of the call to <code>handle.join()</code> and will not end until the spawned thread is finished.</p>
+</li>
+<li>
+<p>It is very important, where you call the <code>handle.join()</code>, as it may create an unexpected behaviour:</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!(&quot;hi number {} from the spawned thread!&quot;, i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    handle.join().unwrap();
+
+    for i in 1..5 {
+        println!(&quot;hi number {} from the main thread!&quot;, i);
+        thread::sleep(Duration::from_millis(1));
+    }
+}</code></pre></pre>
+</li>
+<li>
+<p>This will give us this output:</p>
+<pre><code class="language-zsh">hi number 1 from the spawned thread!
+hi number 2 from the spawned thread!
+hi number 3 from the spawned thread!
+hi number 4 from the spawned thread!
+hi number 5 from the spawned thread!
+hi number 6 from the spawned thread!
+hi number 7 from the spawned thread!
+hi number 8 from the spawned thread!
+hi number 9 from the spawned thread!
+hi number 1 from the main thread!
+hi number 2 from the main thread!
+hi number 3 from the main thread!
+hi number 4 from the main thread!
+</code></pre>
+</li>
+<li>
+<p>So, make sure that you're calling the <code>handle.join()</code> to prevent undesired behaviour.</p>
+</li>
+<li>
+<p>When we use closure, Rust will infer that we want to only borrow the variable.</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    // Notice, here v is only borrowed here,
+    // it's possible that the closure may outlive
+    // and v may die early, so Rust will throw us
+    // error, and will ask us to use move
+    let handle = thread::spawn(|| {
+        println!(&quot;Here's a vector: {:?}&quot;, v);
+    });
+
+    handle.join().unwrap();
+}</code></pre></pre>
+</li>
+<li>
+<p>So, we need to expicitly add the <code>move</code> keyword, to tell Rust to transfer ownership of <code>v</code> to the closure.</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(move || {
+        println!(&quot;Here's a vector: {:?}&quot;, v);
+    });
+
+    // Now, we cannot use v over here, inside the main thread for any reason
+
+    handle.join().unwrap();
+}</code></pre></pre>
+</li>
+</ul>
+<h4 id="using-message-passing-to-transfer-data-between-threads"><a class="header" href="#using-message-passing-to-transfer-data-between-threads">Using Message Passing to Transfer Data Between Threads</a></h4>
+<p><em>“Do not communicate by sharing memory; instead, share memory by communicating.” - Go Language Documentation</em></p>
+<ul>
+<li>
+<p>Rust sends messages between threads to accomplish concurrency.</p>
+</li>
+<li>
+<p>Rust uses <em>channel</em> for the message-sending concurrency (it works similar to a river stream), it has two parts:</p>
+<ul>
+<li><em>Transmitter</em>: The upstream location</li>
+<li><em>Receiver</em>: The downstream location</li>
+</ul>
+</li>
+<li>
+<p>A channel is said to be <em>closed</em> if either the transmitter or receiver half is dropped.</p>
+</li>
+<li>
+<p>You may create a channel just like this:</p>
+<ul>
+<li>
+<p>A channel can have multiple producer of values (multiple sources of river), but only 1 consumer of those values (all rivers will mix into one river).</p>
+</li>
+<li>
+<p>A channel produces it's two parts, inside a tuple and are abbreviated as <code>tx</code> and <code>rx</code>, for transmitter and receiver respectively.</p>
+<pre><pre class="playground"><code class="language-rust">// mpsc stands for multiple producer, single consumer
+use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from(&quot;hi&quot;);
+        // We'll send the value to the receiver's end
+        // and in case there's a problem at receiving
+        // end, it'll thrown an error and cause a panic
+        tx.send(val).unwrap();
+    });
+
+    // The recv()
+    let received = rx.recv().unwrap();
+    println!(&quot;Got: {}&quot;, received);
+}</code></pre></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Ways to receive the values from the channel:</p>
+<ul>
+<li><code>recv()</code>: It'll block the main thread’s execution and wait until a value is sent down the channel.</li>
+<li><code>try_recv()</code>: This method <strong>doesn't block</strong>, but may not contain any value for some time. So, you'll need to call this every so often, by writing a loop.</li>
+</ul>
+</li>
+<li>
+<p>Sending and Receiving multiple values:</p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::mpsc;
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    let tx1 = tx.clone();
+    thread::spawn(move || {
+        let vals = vec![
+            String::from(&quot;hi&quot;),
+            String::from(&quot;from&quot;),
+            String::from(&quot;the&quot;),
+            String::from(&quot;thread&quot;),
+        ];
+
+        for val in vals {
+            tx1.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    thread::spawn(move || {
+        let vals = vec![
+            String::from(&quot;more&quot;),
+            String::from(&quot;messages&quot;),
+            String::from(&quot;from&quot;),
+            String::from(&quot;you&quot;),
+        ];
+
+        for val in vals {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    // We’re not calling the recv function explicitly anymore:
+    // When the channel is closed, iteration will end.
+    for received in rx {
+        println!(&quot;Got: {}&quot;, received);
+    }
+}</code></pre></pre>
+</li>
+</ul>
+<h4 id="shared-state-concurrency"><a class="header" href="#shared-state-concurrency">Shared-State Concurrency</a></h4>
+<ul>
+<li>Shared memory concurrency is like multiple ownership: multiple threads can access the same memory location at the same time.</li>
+<li>We can use <em>Mutex</em> to allow access to data from one thread at a time.</li>
+</ul>
+<h5 id="mutex"><a class="header" href="#mutex">Mutex</a></h5>
+<ul>
+<li>
+<p><em>Mutex</em> is an abbreviation of <em>Mutual Exclusion</em>.</p>
+</li>
+<li>
+<p>It locks the data such that others can use. Lock is a data structure that keeps track of who currently has exclusive access to the data.</p>
+</li>
+<li>
+<p>These are the rules that you'll have to follow while using a Mutex:</p>
+<ul>
+<li>You must attempt to acquire the lock before using the data.</li>
+<li>When you’re done with the data that the mutex guards, you must unlock the data so other threads can acquire the lock.</li>
+</ul>
+</li>
+<li>
+<p>Here's an example:</p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::Mutex;
+
+fn main() {
+    let m = Mutex::new(5);
+
+    {
+        let mut num = m.lock() // It'll block the old thread, until we unlock the mutex
+                       .unwrap(); // lock() may fail if the old thread panics, so unwrap() will also panic the current thread
+        *num = 6; // Mutex returns a Smart Pointer named MutexGuard, that's why we need to dereference it to change it's value
+    } // MutexGuard has a Drop trait implementation, which automatically unlocks the mutex when it goes out of scope
+
+    println!(&quot;m = {:?}&quot;, m);
+}</code></pre></pre>
+</li>
+<li>
+<p>Here's an example wehere the varaible <code>counter</code> will be shared among 10 threads, where each of them will try to increment it by 1.</p>
+<ul>
+<li>Why can't we directly use <code>Mutex</code> within multiple threads?
+<ul>
+<li>The threads use <code>move</code>, which moves the ownership of variable to the thread.</li>
+<li>Rust won't allow us to move the ownership of lock counter in multiple threads.</li>
+</ul>
+</li>
+<li>Why can't we use <code>Rc&lt;T&gt;</code>, to provide multiple ownership to individual threads?
+<ul>
+<li><code>Rc&lt;T&gt;</code> is not safe to share across threads. It is possible if we use <code>Rc&lt;T&gt;</code> in multiple threads, then both threads might update the reference count at same time.</li>
+<li>It doesn’t use any concurrency primitives to make sure that changes to the count can’t be interrupted by another thread.</li>
+<li>That could lead to Wrong Counts and Memory Leak.</li>
+</ul>
+</li>
+<li>What do we need then?
+<ul>
+<li>What we need is a type exactly like <code>Rc&lt;T&gt;</code> but one that makes changes to the reference count in a thread-safe way.</li>
+<li>Fortunately, we have <code>Arc&lt;T&gt;</code> (atomically referenced counter), it is almost like <code>Rc&lt;T&gt;</code>, except the counts are maintained atomically.</li>
+<li>Atomics are primitives that are safe to share across threads.</li>
+</ul>
+</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">use std::sync::{Arc, Mutex};
+use std::thread;
+
+fn main() {
+    // Mutex is used to lock a variable so that other thread can use
+    // Arc provides multiple ownership like Rc&lt;T&gt; and it is thread safe
+    let counter = Arc::new(Mutex::new(0)); // Notice counter is immutable, it's because Mutex provides interior mutability, similar to RefCell
+    let mut handles = vec![];
+
+    for _ in 1..=10 {
+        let counter = Arc::clone(&amp;counter);
+        let handle = thread::spawn(move || {
+            let mut value = counter.lock().unwrap();
+            *value += 1
+        });
+
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!(&quot;The value of counter: {}&quot;, *counter.lock().unwrap());
+}</code></pre></pre>
+</li>
+<li>
+<p>The combination of <code>Arc&lt;Mutex&lt;T&gt;&gt;</code>, is analogous to <code>Rc&lt;RefCell&lt;T&gt;&gt;</code>.</p>
+</li>
+<li>
+<p>Keep in mind using <code>Mutex&lt;T&gt;</code> is risky, as logical errors may lead to <em>deadlocks</em>.</p>
+</li>
+</ul>
+<h4 id="send-and-sync-trait"><a class="header" href="#send-and-sync-trait"><code>Send</code> and <code>Sync</code> trait</a></h4>
+<ul>
+<li>
+<p>These two traits are part of the language itself, unlike otheer features of concurrency as they were part of the standard library.</p>
+</li>
+<li>
+<p>They are called <code>std::marker</code> traits.</p>
+</li>
+<li>
+<p><code>Send</code> vs <code>Sync</code></p>
+<div class="table-wrapper"><table><thead><tr><th><code>Send</code></th><th><code>Sync</code></th></tr></thead><tbody>
+<tr><td>It is safe to transfer ownership of a type between threads.</td><td>It is safe to use that type's reference betweeen threads.</td></tr>
+<tr><td>Any type <code>T</code> that implements <code>Sync</code></td><td>Type <code>T</code> is <code>Sync</code>, if it's reference (<code>&amp;T</code>) is <code>Send</code> or if type <code>T</code> implements <code>Sync</code>.</td></tr>
+<tr><td>Except <code>Rc&lt;T&gt;</code>, almost all types are <code>Send</code>. (use <code>Arc&lt;T&gt;</code> instead).</td><td>Primitive Types, <code>Mutex&lt;T&gt;</code> are <code>Sync</code> but <code>Rc&lt;T&gt;</code>, <code>RefCell&lt;T&gt;</code> are not.</td></tr>
+</tbody></table>
+</div></li>
+<li>
+<p>We don't need to implement <code>Send</code> and <code>Sync</code> for the types that are made up of those types that implements these traits.</p>
+</li>
+<li>
+<p>In case you need to implement thes traits for a particular type than it means you'll need to write some <code>unsafe</code> rust code. You can learn the Dark Arts of Unsafe Code from this book <a href="https://doc.rust-lang.org/nomicon/index.html">“The Rustonomicon”</a>.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-05-medium-concepts/pg-05-smart-pointers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-05-medium-concepts/pg-05-smart-pointers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

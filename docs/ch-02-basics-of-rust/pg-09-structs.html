@@ -1,0 +1,567 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Structs - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html" class="active"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<ul>
+<li>A <em>struct</em>, or structure, is a <strong>custom data type</strong> that lets you name and package together multiple related values that make up a meaningful group.</li>
+<li>It is used to just define the data attributes as we do in Object Oriented Programming Languages.</li>
+<li>There are three types of Structs:
+<ol>
+<li>Structs with Named Fields</li>
+<li>Tuple Structs</li>
+<li>Unit Structs</li>
+</ol>
+</li>
+</ul>
+<h3 id="associated-functions-and-methods"><a class="header" href="#associated-functions-and-methods">Associated Functions and Methods</a></h3>
+<ul>
+<li>Functions defined for structs using the <code>impl</code> keyowrd are called <em>associated functions</em>.</li>
+<li>The associated functions which accepts <code>self</code> as it's first argument are called <em>methods</em>.</li>
+</ul>
+<h4 id="structs-with-named-fields"><a class="header" href="#structs-with-named-fields">Structs with Named Fields</a></h4>
+<ul>
+<li>
+<p>In structs, we name each piece of data, so it's clear what they mean. This name and data type pair are called <em>fields</em>.</p>
+</li>
+<li>
+<p>Struct definition:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct User {
+    active: bool, // A Field
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Creating a struct's instance:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// If you specify mut, all the values will be mutable otherwise none
+let mut user1 = User {
+    email: String::from(&quot;someone@example.com&quot;),
+    username: String::from(&quot;someusername123&quot;),
+    active: true,
+    sign_in_count: 1,
+};
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Taking out and updating the values:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>user1.email = String::from(&quot;anotheremail@example.com&quot;);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Defining functions for structs</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn build_user(email: String, username: String) -&gt; User {
+    User {
+        email, //We can write like this aslo-&gt; email: email
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>The struct update syntax (<code>..</code>), or spread operator in JS:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Initially
+let user2 = User {
+    active: user1.active,
+    username: user1.username,
+    email: String::from(&quot;another@example.com&quot;),
+    sign_in_count: user1.sign_in_count,
+};
+
+// After using the struct update syntax (..)
+let user2 = User {
+    email: String::from(&quot;another@example.com&quot;),
+    ..user1
+};
+<span class="boring">}</span></code></pre></pre>
+<p>Note: This update syntax, works same as assignment operator <code>=</code>, so stack values will get copied and heap values will be moved. Since, username is a String, it's value will be moved from <code>user1</code> to <code>user2</code>, hence <code>user1</code> can't be used again.</p>
+</li>
+<li>
+<p>To prevent this problem of ownership transfer, we can use <code>&amp;str</code> instead of <code>String</code> but when we use references in structs, it won't actually compile but will ask for lifetimes.</p>
+<pre><pre class="playground"><code class="language-rust">// FAIL: Lifetime specifier not provided.
+struct User {
+    username: &amp;str,
+    email: &amp;str,
+    sign_in_count: u64,
+    active: bool,
+}
+
+fn main() {
+    let user1 = User {
+        email: &quot;someone@example.com&quot;,
+        username: &quot;someusername123&quot;,
+        active: true,
+        sign_in_count: 1,
+    };
+}</code></pre></pre>
+</li>
+<li>
+<p>In this situation the compiler situation looks something like this:</p>
+<pre><code class="language-zsh"> --&gt; src/main.rs:2:15
+  |
+2 |     username: &amp;str,
+  |               ^ expected named lifetime parameter
+  |
+help: consider introducing a named lifetime parameter
+  |
+1 | struct User&lt;'a&gt; {
+2 |     username: &amp;'a str,
+  |
+</code></pre>
+</li>
+</ul>
+<h4 id="tuple-structs"><a class="header" href="#tuple-structs">Tuple Structs</a></h4>
+<ul>
+<li>
+<p>Using Tuple Structs without Named Fields to Create Different Types:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+let black = Color(0, 0, 0);
+let origin = Point(0, 0, 0);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>To access their types, we use the <code>.</code> operator followed by the number of this argumnet.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let color = Color(10, 25, 16);
+let red = color.0;
+let green = color.1;
+let blue = color.2;
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="unit-structs"><a class="header" href="#unit-structs">Unit Structs</a></h4>
+<ul>
+<li>
+<p>They are structs without Any Fields (they act like <code>()</code>).</p>
+</li>
+<li>
+<p>They are Useful when we want to implement a trait on some type but don’t have any data that you want to store in the type itself.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct AlwaysEqual;
+
+let subject = AlwaysEqual;
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="why-do-we-use-structs"><a class="header" href="#why-do-we-use-structs">Why do we use Structs?</a></h4>
+<ol>
+<li>
+<p>It is a more sensible design choice to pass as minimum arguments as possible inside a function. For Example, if we need to calculate the area of rectangle, instead of passing <code>height</code> and <code>width</code>, it would be cleaner to pass the whole rectangle.</p>
+</li>
+<li>
+<p>Now, this can be done with the tuples too. For Example, <code>let rect1 = (50, 30);</code> but the problem with this syntax is that any developer can confuse which one is width or height.</p>
+</li>
+<li>
+<p>To make this process clearer and cleaner, we use <code>struct</code>, so that we can combine the data and still keep the meaning of each attribute intact.</p>
+<pre><pre class="playground"><code class="language-rust">struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 50,
+        height: 30
+    };
+
+    println!(&quot;The area of the rectangle is {} square pixels&quot;, area(&amp;rect1));
+}
+
+
+// Passing Rectangle as a reference is important so that main fn
+// can retain it's ownership after this function is called.
+fn area(rectangle: &amp;Rectangle) -&gt; u32 {
+    rectangle.width * rectangle.height
+}</code></pre></pre>
+</li>
+</ol>
+<h4 id="printing-variables"><a class="header" href="#printing-variables">Printing Variables</a></h4>
+<ul>
+<li>
+<p>Ways to Print the variables:</p>
+<ul>
+<li><code>{}</code> - Used to print variables with Display trait, for simple data types like int, string etc. we don't need to derive this attribute.</li>
+<li><code>{:?}</code> - Used to print complex variables with Debug trait, preferred for complex data type like struct, and we need to derive the <code>Debug</code> attribute.</li>
+<li><code>{:#?}</code> - Works similarly like <code>{:?}</code>, except it's preferred for structs with large number of fields.</li>
+<li><code>dbg!()</code> - It is a macro used with Debug trait to print the variables, file and line number. It prints to <code>stderr</code> instead of <code>stdout</code> (which <code>println!()</code> uses). It takes ownership, so prefer sending references to it.</li>
+</ul>
+</li>
+<li>
+<p>Here's an example of using the <code>dbg!()</code> macro:</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let scale = 2;
+    let rect1 = Rectangle {
+        width: dbg!(30 * scale), // It'll resolve the expression `30 * scale`, as if dbg!() call was never there, it happens due to ownership transfer
+        height: 50,
+    };
+
+    dbg!(&amp;rect1); // To maintian the scope of rect1 in main() we sent only the reference.
+}</code></pre></pre>
+</li>
+<li>
+<p>The output looks like this:</p>
+<pre><code class="language-zsh">   Compiling rectangles v0.1.0 (file:///projects/rectangles)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.61s
+     Running `target/debug/rectangles`
+[src/main.rs:10] 30 * scale = 60
+[src/main.rs:14] &amp;rect1 = Rectangle {
+    width: 60,
+    height: 50,
+}
+</code></pre>
+</li>
+<li>
+<p>You can read more about <a href="https://doc.rust-lang.org/book/appendix-03-derivable-traits.html">Derivable Traits</a> and <a href="https://doc.rust-lang.org/reference/attributes.html">Attributes</a>.</p>
+</li>
+</ul>
+<h4 id="structs-with-method-syntax"><a class="header" href="#structs-with-method-syntax">Structs with Method Syntax</a></h4>
+<ul>
+<li>
+<p>When functions are defined in the context of a struct, enum or trait they are called as <em>Methods</em>.</p>
+</li>
+<li>
+<p>The first parameter of a method is always <code>self</code>, which represents the instance.</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+// Everything inside the impl block is associated with Rectangle
+impl Rectangle {
+
+    // &amp;self is a short hand for self: `&amp;self` (references are used to prevent mutation)
+    // You can pass the following too:
+    // self - Ownership of instance
+    // &amp;self - Reference to the instance {Currently Using}
+    // &amp;mut self - Mutable Reference to the instance
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+
+    // It is possible to name methods same as fields of struct
+    // Usually these methods are used as getters, to keep the fields private but provide read only accees using the methods
+    fn width(&amp;self) -&gt; bool {
+      self.width &gt; 0
+    }
+
+    // This is how we pass anotherr instance of same struct to a method
+    fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
+      self.width &gt; other.width &amp;&amp; self.height &gt; other.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    let rect2 = Rectangle {
+      width: 15,
+      height: 25,
+    };
+
+    println!(
+        &quot;The area of the rectangle is {} square pixels.&quot;,
+        rect1.area()
+    );
+
+    // If we use rect1.width() - Rust unserstands it as method and
+    // if we use rect1.width - Rust unserstands it as a field
+    if rect1.width() {
+      println!(&quot;The rectangle has a nonzero width; it is {}&quot;, rect1.width);
+    };
+
+    // This is how we can pass second instance while calling a method on first instance
+    println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
+}</code></pre></pre>
+</li>
+</ul>
+<p>Note: When you call a method with <code>object.something()</code>, Rust automatically adds in <code>&amp;</code>, <code>&amp;mut</code>, or <code>*</code> so object matches the signature of the method. In other words, the following are the same:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>p1.distance(&amp;p2);
+(&amp;p1).distance(&amp;p2);
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li>
+<p>It is possible to use different <code>impl</code> blocks, it is a valid syntax.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
+        self.width &gt; other.width &amp;&amp; self.height &gt; other.height
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="associated-functions"><a class="header" href="#associated-functions">Associated Functions</a></h4>
+<ul>
+<li>
+<p>All the functions defined under <code>impl</code> are associated functions.</p>
+</li>
+<li>
+<p>Methods are associated functions which has <code>self</code> as an argument and we use <code>.</code> operator to access it.</p>
+</li>
+<li>
+<p>It is possible to define associated functions without passing <code>self</code> as the <strong>first</strong> argument, these functions are accessed through <code>::</code> operator.</p>
+</li>
+<li>
+<p>Here's an example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Calling a method, also an associated function
+instance.method(some_argument);
+
+// Calling an associated function, without self as the first argument, hence not a method
+String::from(&quot;Hello, World!&quot;);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>These associated functions are commonly used as constructors. Also, for the previous example of Rectangle, we can use it as follows:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Rectangle {
+    // With this associated function we can create a new instance of Rectangle
+    // by passing one value instead of two, hence creating a square.
+    fn square(size: u32) -&gt; Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>It can be called like this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let sq = Rectangle::square(3);
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-02-basics-of-rust/pg-08-borrowing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-02-basics-of-rust/pg-10-enums.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-02-basics-of-rust/pg-08-borrowing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-02-basics-of-rust/pg-10-enums.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Advanced Pattern Matching - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html" class="active"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h2>
+<ul>
+<li>
+<p><code>match</code> Arms</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match VALUE {
+    PATTERN =&gt; EXPRESSION,
+    PATTERN =&gt; EXPRESSION,
+    PATTERN =&gt; EXPRESSION,
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Conditional <code>if let</code> statements</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let favorite_color: Option&lt;&amp;str&gt; = None;
+    let is_tuesday = false;
+    let age: Result&lt;u8, _&gt; = &quot;34&quot;.parse();
+
+    if let Some(color) = favorite_color {
+        println!(&quot;Using your favorite color, {}, as the background&quot;, color);
+    } else if is_tuesday {
+        println!(&quot;Tuesday is green day!&quot;);
+    } else if let Ok(age) = age {
+        if age &gt; 30 {
+            println!(&quot;Using purple as the background color&quot;);
+        } else {
+            println!(&quot;Using orange as the background color&quot;);
+        }
+    } else {
+        println!(&quot;Using blue as the background color&quot;);
+    }
+}</code></pre></pre>
+</li>
+<li>
+<p><code>while let</code> loops</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let mut stack = Vec::new();
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    while let Some(top) = stack.pop() {
+        println!(&quot;{}&quot;, top);
+    }
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p><code>for</code> loops</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let v = vec!['a', 'b', 'c'];
+
+    for (index, value) in v.iter().enumerate() {
+        println!(&quot;{} is at index {}&quot;, value, index);
+    }
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p><code>let</code> statements</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let (x, y, z) = (1, 2, 3);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>function parameters</p>
+<pre><pre class="playground"><code class="language-rust">fn print_coordinates(&amp;(x, y): &amp;(i32, i32)) {
+    println!(&quot;Current location: ({}, {})&quot;, x, y);
+}
+
+fn main() {
+    let point = (3, 5);
+    print_coordinates(&amp;point);
+}</code></pre></pre>
+</li>
+</ul>
+<h4 id="forms-of-pattern"><a class="header" href="#forms-of-pattern">Forms of Pattern</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>Refutable</th><th>Irrefutable</th></tr></thead><tbody>
+<tr><td>Patterns that can fail to match for some possible value.</td><td>Patterns that'll match for any possible value.</td></tr>
+<tr><td>For Example, in <code>if let Some(x) = a_value</code>, the <code>Some(x)</code> can fail to match if <code>a_value</code> is <code>None</code>.</td><td>For Example, in <code>let x = 5;</code>, the <code>x</code> matches anything and therefore cannot fail to match.</td></tr>
+<tr><td>The <code>if let</code> and <code>while let</code> expressions accept refutable and irrefutable patterns, but the compiler warns against irrefutable patterns.</td><td>Function parameters, <code>let</code> statements, and <code>for</code> loops can only accept irrefutable patterns, because the program cannot do anything meaningful when values don’t match.</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>
+<p>Using a refutable pattern where Rust requires an irrefutable pattern:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// FAIL: The code doesn't know what to do with a None value
+// Some(x) is a refutable pattern
+// let requires an irrefutable pattern
+let Some(x) = some_option_value;
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Using irrefutable pattern where Rust requires a refutable pattern:</p>
+</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// WARN: It doesn’t make sense to use if let with an irrefutable pattern
+// x is an irrefutable pattern
+// if let is a refutable pattern
+if let x = 5 {
+    println!(&quot;{}&quot;, x);
+};
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li>In <code>match</code> statements, all arms use refutable pattern except the last one that uses <code>_</code>, which uses irrefutable pattern.</li>
+</ul>
+<h4 id="pattern-syntax"><a class="header" href="#pattern-syntax">Pattern Syntax</a></h4>
+<h5 id="inside-the-match-expression"><a class="header" href="#inside-the-match-expression">Inside the <code>match</code> expression</a></h5>
+<ul>
+<li>
+<p>Each <code>match</code> expression creates a new scope, hence varaibles defined in scope will shadow the variables defined outside.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let x = Some(5);
+    let y = 10;
+
+    match x {
+        Some(50) =&gt; println!(&quot;Got 50&quot;),
+        Some(y) =&gt; println!(&quot;Matched, y = {:?}&quot;, y), // This y will shadow the y defined outside of this scope
+        _ =&gt; println!(&quot;Default case, x = {:?}&quot;, x),
+    }
+
+    println!(&quot;at the end: x = {:?}, y = {:?}&quot;, x, y);
+
+    // Output =&gt;
+    // Matched, y = 5
+    // at the end: x = Some(5), y = 10
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>It's possible to use the &quot;or&quot; using the <code>|</code> syntax</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let x = 1;
+
+    match x {
+        1 | 2 =&gt; println!(&quot;one or two&quot;),
+        3 =&gt; println!(&quot;three&quot;),
+        _ =&gt; println!(&quot;anything&quot;),
+    }
+
+    // Output =&gt;
+    // one or two
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>You may also specify ranges in the arm, only numbers and <code>char</code> values are allowed.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let x = 5;
+
+    match x {
+        1..=5 =&gt; println!(&quot;one through five&quot;),
+        _ =&gt; println!(&quot;something else&quot;),
+    }
+
+    let y = 'c';
+
+    match y {
+        'a'..='j' =&gt; println!(&quot;early ASCII letter&quot;),
+        'k'..='z' =&gt; println!(&quot;late ASCII letter&quot;),
+        _ =&gt; println!(&quot;something else&quot;),
+    }
+
+    // Output =&gt;
+    // one through five
+    // early ASCII letter
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h5 id="destructuring"><a class="header" href="#destructuring">Destructuring</a></h5>
+<ul>
+<li>
+<p>Destructuring structs</p>
+<pre><pre class="playground"><code class="language-rust">struct Point {
+    x: i32,
+    y: i32,
+}
+
+fn main() {
+    let p = Point { x: 0, y: 7 };
+
+    // It's possible to destructure a struct into variables
+    let Point { x: a, y: b } = p;
+    assert_eq!(0, a);
+    assert_eq!(7, b);
+
+    // A shorthand, will directly store respective values in x and y
+    let Point { x, y } = p;
+    assert_eq!(0, x);
+    assert_eq!(7, y);
+}</code></pre></pre>
+</li>
+<li>
+<p>Destructring as well as matching the structs</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let p = Point { x: 0, y: 7 };
+
+    match p {
+        Point { x, y: 0 } =&gt; println!(&quot;On the x axis at {}&quot;, x),
+        Point { x: 0, y } =&gt; println!(&quot;On the y axis at {}&quot;, y),
+        Point { x, y } =&gt; println!(&quot;On neither axis: ({}, {})&quot;, x, y),
+    }
+}</code></pre></pre>
+</li>
+<li>
+<p>Destructuring enums</p>
+<pre><pre class="playground"><code class="language-rust">enum Color {
+    Rgb(i32, i32, i32),
+    Hsv(i32, i32, i32),
+}
+
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(Color),
+}
+
+fn main() {
+    let msg = Message::ChangeColor(Color::Hsv(0, 160, 255));
+
+    match msg {
+        Message::Quit =&gt; {
+            println!(&quot;The Quit variant has no data to destructure.&quot;)
+        }
+        Message::Move { x, y } =&gt; {
+            println!(
+                &quot;Move in the x direction {} and in the y direction {}&quot;,
+                x, y
+            );
+        }
+        Message::Write(text) =&gt; println!(&quot;Text message: {}&quot;, text),
+        Message::ChangeColor(r, g, b) =&gt; println!(
+            &quot;Change the color to red {}, green {}, and blue {}&quot;,
+            r, g, b
+        ),
+        Message::ChangeColor(Color::Rgb(r, g, b)) =&gt; println!(
+            &quot;Change the color to red {}, green {}, and blue {}&quot;,
+            r, g, b
+        ),
+        Message::ChangeColor(Color::Hsv(h, s, v)) =&gt; println!(
+            &quot;Change the color to hue {}, saturation {}, and value {}&quot;,
+            h, s, v
+        ),
+    }
+}</code></pre></pre>
+</li>
+<li>
+<p>We can mix, match, and nest destructuring patterns in even more complex ways</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let ((feet, inches), Point { x, y }) = ((3, 10), Point { x: 3, y: -10 });
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h5 id="ignoring-values"><a class="header" href="#ignoring-values">Ignoring Values</a></h5>
+<ul>
+<li>
+<p>You may use <code>_</code> or <code>..</code> to ignore values:</p>
+<ul>
+<li><code>_</code> : It is used when you want to ignore a warning of unused variable, inside match expression for the remaining values or using a name that starts with underscore.</li>
+<li><code>..</code> : Ignore remaining parts of the value.</li>
+</ul>
+</li>
+<li>
+<p>You may use <code>_</code> for ignoring an unused variable</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let _x = 5;
+    let y = 10;
+}</code></pre></pre>
+</li>
+<li>
+<p>It's possible to use <code>_</code> in functions</p>
+<pre><pre class="playground"><code class="language-rust">fn foo(_: i32, y: i32) {
+    println!(&quot;This code only uses the y parameter: {}&quot;, y);
+}
+
+fn main() {
+    foo(3, 4);
+}</code></pre></pre>
+</li>
+<li>
+<p>There is a subtle difference between using only <code>_</code> and using a name that starts with an underscore.</p>
+<ul>
+<li>
+<p>The syntax <code>_x</code> still binds the value to the variable.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// FAIL: s lost it's ownership to _s, but was attempted to use again for printing
+let s = Some(String::from(&quot;Hello!&quot;));
+
+// _s binds the value, the value of s is moved
+if let Some(_s) = s {
+    println!(&quot;found a string&quot;);
+}
+
+println!(&quot;{:?}&quot;, s);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Whereas <code>_</code> doesn’t bind at all.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let s = Some(String::from(&quot;Hello!&quot;));
+
+    // _ never binds the value, hence s stays the owner
+    if let Some(_) = s {
+        println!(&quot;found a string&quot;);
+    }
+
+    println!(&quot;{:?}&quot;, s);
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note: Ignoring a function parameter can be especially useful in some cases, for example, when implementing a trait when you need a certain type signature but the function body in your implementation doesn’t need one of the parameters. The compiler will then not warn about unused function parameters, as it would if you used a name instead.</p>
+<ul>
+<li>
+<p>Ignoring remaining parts of <code>struct</code> with <code>..</code></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
+let origin = Point { x: 0, y: 0, z: 0 };
+
+match origin {
+    // It prevents using _ multiple times
+    Point { x, .. } =&gt; println!(&quot;x is {}&quot;, x),
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Skipping middle values using <code>..</code></p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let numbers = (2, 4, 8, 16, 32);
+
+    match numbers {
+        (first, .., last) =&gt; {
+            println!(&quot;Some numbers: {}, {}&quot;, first, last);
+        }
+    }
+}</code></pre></pre>
+</li>
+<li>
+<p>You can only use <code>..</code> once per tuple</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let numbers = (2, 4, 8, 16, 32);
+
+    match numbers {
+        (.., second, ..) =&gt; {
+            println!(&quot;Some numbers: {}&quot;, second)
+        },
+    }
+}</code></pre></pre>
+</li>
+</ul>
+<h5 id="match-guard"><a class="header" href="#match-guard">Match Guard</a></h5>
+<ul>
+<li>
+<p><em>Match Guard</em> is an additional <code>if</code> condition specified after the pattern in a match arm that must also match along with the pattern matching, <em>for that arm to be chosen</em>.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let num = Some(4);
+
+    match num {
+        Some(x) if x % 2 == 0 =&gt; println!(&quot;The number {} is even&quot;, x),
+        Some(x) =&gt; println!(&quot;The number {} is odd&quot;, x),
+        None =&gt; (),
+    }
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>The downside of this additional expressiveness is that the compiler doesn't try to check for exhaustiveness when match guard expressions are involved.</p>
+</li>
+<li>
+<p>Using Match Guard with <code>|</code> operator</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let x = 4;
+    let y = false;
+
+    match x {
+        // It works like this =&gt; (4 | 5 | 6) if y =&gt; ...
+        // And not like this =&gt; 4 | 5 | (6 if y) =&gt; ...
+        4 | 5 | 6 if y =&gt; println!(&quot;yes&quot;),
+        _ =&gt; println!(&quot;no&quot;),
+    }
+
+    // Output =&gt;
+    // no
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p><code>@</code> Bindings</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// The at operator (@) lets us create a variable that holds a value at the same time
+// we’re testing that value to see whether it matches a pattern.
+
+enum Message {
+    Hello { id: i32 },
+}
+
+let msg = Message::Hello { id: 5 };
+
+match msg {
+    Message::Hello {
+        id: id_variable @ 3..=7,
+    } =&gt; println!(&quot;Found an id in range: {}&quot;, id_variable), // Value of &quot;id&quot; is stored in &quot;id_variable&quot;, hence it was knwon here
+    Message::Hello { id: 10..=12 } =&gt; {
+        println!(&quot;Found an id in another range&quot;) // Range was specified, Value of &quot;id&quot; is not stored inside any variable, hence it is unknown here
+    }
+    Message::Hello { id } =&gt; println!(&quot;Found some other id: {}&quot;, id), // Range was not specified, Value of &quot;id&quot; is stored inside &quot;id&quot;, hence it was known here
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-06-advanced-concepts/main.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-06-advanced-concepts/main.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Advanced Traits - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html" class="active"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="advanced-traits"><a class="header" href="#advanced-traits">Advanced Traits</a></h3>
+<h4 id="associated-types"><a class="header" href="#associated-types">Associated Types</a></h4>
+<ul>
+<li>
+<p>This is how you can create an associate type inside a trait</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait Iterator {
+    type Item; // You see, this is the associated type
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt;; // Now, this trait can use this type in it's signatures
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Here's an implementation of this trait on one of our types Counter:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Iterator for Counter {
+    type Item = u32;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
+        // --snip--
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Now, you might be wondering, can't we do something like this with using traits with generics?</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait Iterator&lt;T&gt; {
+    fn next(&amp;mut self) -&gt; Option&lt;T&gt;;
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Here are the differences between Associated Types and Traits with generics?</p>
+<div class="table-wrapper"><table><thead><tr><th>Traits with Associated Types</th><th>Traits with Generics</th></tr></thead><tbody>
+<tr><td>There will be only one implementation for a type.</td><td>There can be multiple implementations for a type, using individual concrete type.</td></tr>
+<tr><td>For Example, <code>impl Iterator for Counter</code></td><td>For Example, <code>impl Iterator&lt;String&gt; for Counter</code>, and many more.</td></tr>
+<tr><td>Using functions of these traits will not require you to provide type annotations.</td><td>You'll need to provide type annotations to provide which iteration to use.</td></tr>
+</tbody></table>
+</div></li>
+</ul>
+<h4 id="operator-overloading"><a class="header" href="#operator-overloading">Operator Overloading</a></h4>
+<ul>
+<li>
+<p>This is how you can add two types by using the <code>+</code> operator</p>
+<pre><pre class="playground"><code class="language-rust">// This library `std::ops` contains all the overloadable operators
+use std::ops::Add;
+
+#[derive(Debug, Copy, Clone, PartialEq)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl Add for Point {
+    type Output = Point; // associated type will restrict the number of implementations
+
+    fn add(self, other: Point) -&gt; Point { // This fn will decide how the `+` will behave for the type Point
+        Point {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
+}
+
+fn main() {
+    assert_eq!(
+        Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
+        Point { x: 3, y: 3 }
+    );
+}</code></pre></pre>
+</li>
+<li>
+<p>This is how the trait <code>Add</code> is defined in the Rust's library <code>std::ops</code></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// This syntax `&lt;Rhs=Self&gt;` is called &quot;default parameters&quot;
+// In case, someone implementing this trait doesn't define the type
+// then the type defined in default parameter will be used everywhere in this trait
+trait Add&lt;Rhs=Self&gt; {
+    type Output;
+
+    fn add(self, rhs: Rhs) -&gt; Self::Output; // The &quot;default parameter&quot; is used here inside argument `rhs`
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>You can also customize <code>Rhs</code>, that'll mean you'll be adding a value of different type to the main type</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::ops::Add;
+
+struct Millimeters(u32);
+struct Meters(u32);
+
+impl Add&lt;Meters&gt; for Millimeters { // Modified Rhs to Meters, otherwise the default will be Self (or Millimeters)
+    type Output = Millimeters;
+
+    fn add(self, other: Meters) -&gt; Millimeters {
+        Millimeters(self.0 + (other.0 * 1000))
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>You’ll use default type parameters in two main ways:</p>
+<ul>
+<li>To extend a type without breaking existing code</li>
+<li>To allow customization in specific cases most users won’t need</li>
+</ul>
+</li>
+</ul>
+<h4 id="function-with-same-name-in-multiple-traits"><a class="header" href="#function-with-same-name-in-multiple-traits">Function with same name in multiple traits</a></h4>
+<ul>
+<li>
+<p>Following things are allowed:</p>
+<ul>
+<li>Multiple traits to have functions with same name</li>
+<li>A type implementing all these traits</li>
+</ul>
+</li>
+<li>
+<p>Here's an implementation:</p>
+<pre><pre class="playground"><code class="language-rust">trait Pilot {
+    fn fly(&amp;self);
+}
+
+trait Wizard {
+    fn fly(&amp;self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&amp;self) {
+        println!(&quot;This is your captain speaking.&quot;);
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&amp;self) {
+        println!(&quot;Up!&quot;);
+    }
+}
+
+impl Human {
+    fn fly(&amp;self) {
+        println!(&quot;*waving arms furiously*&quot;);
+    }
+}
+
+fn main() {
+    let person = Human;
+    Pilot::fly(&amp;person); // You'll have to pass the reference to the person, because it takes self as an argument
+    Wizard::fly(&amp;person); // if we had two types that both implement one trait, this self would recognize the correct type
+    person.fly(); // The direct implementation will get called first, instead you can also use Human::fly(&amp;person)
+}</code></pre></pre>
+</li>
+<li>
+<p>Let's see what happens if the <em>associated function</em> of a <em>struct</em> and a <em>trait</em> has same name</p>
+<pre><pre class="playground"><code class="language-rust">trait Animal {
+    // Notice, there is no self passed inside,
+    // multiple types can implement this trait,
+    // Calling this function won't be direct,
+    // as the trait won't be able to infer
+    // which type's implementation to call
+    fn baby_name() -&gt; String;
+}
+
+struct Dog;
+
+impl Dog {
+    // This is an associated function, which can be called
+    // using `Dog::baby_name()`, just like any other
+    // associated fn without self
+    fn baby_name() -&gt; String {
+        String::from(&quot;Spot&quot;)
+    }
+}
+
+impl Animal for Dog {
+    fn baby_name() -&gt; String {
+        String::from(&quot;puppy&quot;)
+    }
+}
+
+fn main() {
+    println!(&quot;A baby dog is called a {}&quot;, Dog::baby_name()); // The direct implementation will get called
+    println!(&quot;A baby dog is called a {}&quot;, Animal::baby_name()); // Won't work, this associated fn don't has self, remember? It can't infer the type
+    println!(&quot;A baby dog is called a {}&quot;, &lt;Dog as Animal&gt;::baby_name()); // We need to tell Rust that we want to use the implementation of Animal for Dog
+}</code></pre></pre>
+</li>
+<li>
+<p>This is the fully qualified syntax, used for all associated functions (including methods)</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>&lt;Type as Trait&gt;::function(receiver_if_method, next_arg, ...); // You don't need to provide all the information that Rust can infer
+<span class="boring">}</span></code></pre></pre>
+</li>
+</ul>
+<h4 id="supertraits"><a class="header" href="#supertraits">Supertraits</a></h4>
+<ul>
+<li>
+<p>Sometimes, you might need one trait to use another trait’s functionality.</p>
+</li>
+<li>
+<p>The traits you would be using to build your own trait is called <em>Supertrait</em>.</p>
+</li>
+<li>
+<p>One important thing is that, now your trait can only be implemented on the types that already implements the Supertrait.</p>
+</li>
+<li>
+<p>Here's an implementation. This <code>OutlinePrint</code> can <strong>only</strong> be implemented on any trait that implements <code>Display</code>.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt;
+
+trait OutlinePrint: fmt::Display { // It is also like bounding a trait with another trait
+    fn outline_print(&amp;self) {
+        let output = self.to_string(); // It works only because all the types already implements `Display`
+        let len = output.len();
+        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
+        println!(&quot;* {} *&quot;, output);
+        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
+        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>For reference, you can also implement <code>fmt::Display</code> on your type, like this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point {
+    x: i32,
+    y: i32,
+}
+
+use std::fmt;
+
+impl fmt::Display for Point {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;({}, {})&quot;, self.x, self.y)
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Now, we know that <code>Point</code> implements <code>Display</code>, now we can implement <code>OutlinePrint</code> like this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl OutlinePrint for Point {}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>The output will look like this for the fn <code>outline_print</code></p>
+<pre><code class="language-zsh">**********
+*        *
+* (1, 3) *
+*        *
+**********
+</code></pre>
+</li>
+</ul>
+<h4 id="newtype-pattern"><a class="header" href="#newtype-pattern">Newtype Pattern</a></h4>
+<p><em>The <strong>Orphan Rule</strong> states that we’re allowed to implement a trait on a type as long as either the trait or the type are local to our crate.</em></p>
+<ul>
+<li>
+<p>The <em>newtype pattern</em> , helps us to get around this restriction.</p>
+</li>
+<li>
+<p>All we need to do is to create a new type in a tuple struct.</p>
+</li>
+<li>
+<p>Let's say, we want to implement <code>Display</code> on <code>Vec&lt;T&gt;</code>. Both of them are not local to our code, thereby orphan rule will prevent us from implementing it.</p>
+</li>
+<li>
+<p>Now, we can use this newtype pattern for getting a workaround. What we'll be building is a wrapper that will make the <code>Vec&lt;T&gt;</code> local to us.</p>
+<pre><pre class="playground"><code class="language-rust">use std::fmt;
+
+struct Wrapper(Vec&lt;String&gt;); // A new struct, which is just a wrapper for Vec&lt;String&gt;
+
+impl fmt::Display for Wrapper { // Now, we can implement Display on Wrapper, but we can't do directly on Vec&lt;T&gt;
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;[{}]&quot;, self.0.join(&quot;, &quot;)) // self.0 is used to take the Vector out
+    }
+}
+
+fn main() {
+    // The only disadvantage is that, we'll need to create
+    // a vector inside a wrapper to use the Display trait
+    let w = Wrapper(vec![String::from(&quot;hello&quot;), String::from(&quot;world&quot;)]);
+    println!(&quot;w = {}&quot;, w);
+}</code></pre></pre>
+</li>
+<li>
+<p>If we wanted the new type to have every method the inner type has, <a href="https://doc.rust-lang.org/book/ch15-02-deref.html#treating-smart-pointers-like-regular-references-with-the-deref-trait">implementing the Deref trait</a> on the Wrapper to return the inner type would be a solution.</p>
+</li>
+<li>
+<p>If we don’t want the Wrapper type to have all the methods of the inner type — for example, to restrict the Wrapper type’s behavior — we would have to implement just the methods we do want manually.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-06-advanced-concepts/pg-04-advanced-types.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-06-advanced-concepts/pg-04-advanced-types.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

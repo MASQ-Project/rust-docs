@@ -1,0 +1,548 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Functional Language Features - MASQ Rust Docs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Welcome!</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/main.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-01-benefits-of-using-rust.html"><strong aria-hidden="true">1.1.</strong> Benefits of using rust</a></li><li class="chapter-item expanded "><a href="../ch-01-introduction/pg-02-the-hello-world-program.html"><strong aria-hidden="true">1.2.</strong> The Hello World Program</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/main.html"><strong aria-hidden="true">2.</strong> Basics of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-01-variables-and-mutability.html"><strong aria-hidden="true">2.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-02-data-types.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-03-advanced-data-types.html"><strong aria-hidden="true">2.3.</strong> Advanced Data Types</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-04-functions.html"><strong aria-hidden="true">2.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-05-control-flow.html"><strong aria-hidden="true">2.5.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-06-loops.html"><strong aria-hidden="true">2.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-07-ownership.html"><strong aria-hidden="true">2.7.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-08-borrowing.html"><strong aria-hidden="true">2.8.</strong> Borrowing</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-09-structs.html"><strong aria-hidden="true">2.9.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-10-enums.html"><strong aria-hidden="true">2.10.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../ch-02-basics-of-rust/pg-11-pattern-matching.html"><strong aria-hidden="true">2.11.</strong> Pattern Matching</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/main.html"><strong aria-hidden="true">3.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-01-vector.html"><strong aria-hidden="true">3.1.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../ch-03-common-collections/pg-02-hashmaps.html"><strong aria-hidden="true">3.2.</strong> HashMaps</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/main.html"><strong aria-hidden="true">4.</strong> Project Structuring and Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-01-project-structuring.html"><strong aria-hidden="true">4.1.</strong> Project Structuring</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-02-modularizing.html"><strong aria-hidden="true">4.2.</strong> Modularizing</a></li><li class="chapter-item expanded "><a href="../ch-04-project-structuring-and-error-handling/pg-03-error-handling.html"><strong aria-hidden="true">4.3.</strong> Error Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/main.html"><strong aria-hidden="true">5.</strong> Medium Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-01-generics.html"><strong aria-hidden="true">5.1.</strong> Generics</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-02-traits.html"><strong aria-hidden="true">5.2.</strong> Traits</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-03-lifetimes.html"><strong aria-hidden="true">5.3.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-04-functional-language-features.html" class="active"><strong aria-hidden="true">5.4.</strong> Functional Language Features</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-05-smart-pointers.html"><strong aria-hidden="true">5.5.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-06-concurrency.html"><strong aria-hidden="true">5.6.</strong> Concurrency</a></li><li class="chapter-item expanded "><a href="../ch-05-medium-concepts/pg-07-object-oriented-programming.html"><strong aria-hidden="true">5.7.</strong> Object Oriented Programming</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/main.html"><strong aria-hidden="true">6.</strong> Advanced Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-01-advanced-pattern-matching.html"><strong aria-hidden="true">6.1.</strong> Advanced Pattern Matching</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-02-unsafe-rust.html"><strong aria-hidden="true">6.2.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-03-advanced-traits.html"><strong aria-hidden="true">6.3.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-04-advanced-types.html"><strong aria-hidden="true">6.4.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-05-advanced-functions-and-closures.html"><strong aria-hidden="true">6.5.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-06-macros.html"><strong aria-hidden="true">6.6.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../ch-06-advanced-concepts/pg-07-miscellaneous.html"><strong aria-hidden="true">6.7.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/main.html"><strong aria-hidden="true">7.</strong> Rust Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-01-getting-started.html"><strong aria-hidden="true">7.1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-02-controlling-tests.html"><strong aria-hidden="true">7.2.</strong> Controlling Tests</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-03-test-organization.html"><strong aria-hidden="true">7.3.</strong> Test Organization</a></li><li class="chapter-item expanded "><a href="../ch-07-rust-tests/pg-04-test-driven-development.html"><strong aria-hidden="true">7.4.</strong> Test Driven Development</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/main.html"><strong aria-hidden="true">8.</strong> Useful Snippets</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-01-useful-operations.html"><strong aria-hidden="true">8.1.</strong> Useful Operations</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-02-useful-functions.html"><strong aria-hidden="true">8.2.</strong> Useful Functions</a></li><li class="chapter-item expanded "><a href="../ch-08-useful-snippets/pg-03-useful-macros.html"><strong aria-hidden="true">8.3.</strong> Useful Macros</a></li></ol></li><li class="chapter-item expanded "><a href="../ch-09-masq-rust-tools/main.html"><strong aria-hidden="true">9.</strong> MASQ Rust Tools</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/main.html"><strong aria-hidden="true">10.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-01-installation.html"><strong aria-hidden="true">10.1.</strong> Installaiton</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-02-basic-rust-commands.html"><strong aria-hidden="true">10.2.</strong> Basic Rust Commands</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-03-conventions-in-rust.html"><strong aria-hidden="true">10.3.</strong> Conventions in Rust</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-04-documentation.html"><strong aria-hidden="true">10.4.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-05-cargo.html"><strong aria-hidden="true">10.5.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../ch-10-appendix/pg-06-editions-in-rust.html"><strong aria-hidden="true">10.6.</strong> Editions in Rust</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MASQ Rust Docs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="functional-language-features"><a class="header" href="#functional-language-features">Functional Language Features</a></h2>
+<p>Fun Fact: The implementations of closures and iterators are such that runtime performance is not affected. It means as if you've written to an optimized low level code, like in Assembly Language. This is part of Rust’s goal to strive to provide <em>zero-cost abstractions</em>.</p>
+<ul>
+<li>Programming in a functional style often includes using functions as values by passing them in arguments, returning them from other functions, assigning them to variables for later execution, and so forth.</li>
+<li>Specifically, functional programming includes:
+<ul>
+<li><em>Closures</em>: A function-like construct you can store in a variable.</li>
+<li><em>Iterators</em>: A way of processing a series of elements.</li>
+</ul>
+</li>
+</ul>
+<h4 id="closures"><a class="header" href="#closures">Closures</a></h4>
+<ul>
+<li>
+<p>They are &quot;Anonymous Functions that Can Capture Their Environment&quot;.</p>
+</li>
+<li>
+<p>An example of closure:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let expensive_closure = |num| {
+    println!(&quot;calculating slowly...&quot;);
+    thread::sleep(Duration::from_secs(2));
+    num
+};
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Why closures don't require type annotations, but functions (<code>fn</code>) do?</p>
+<ul>
+<li>Type annotations are required on functions because they’re part of an explicit interface exposed to your users. Defining this interface rigidly is important for ensuring that everyone agrees on what types of values a function uses and returns.</li>
+<li>But closures aren’t used in an exposed interface like this: they’re stored in variables and used without naming them and exposing them to users of our library.</li>
+</ul>
+</li>
+<li>
+<p>In case, we still want to explicitly define type annotations, we can do it by:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let expensive_closure = |num: u32| -&gt; u32 {
+    println!(&quot;calculating slowly...&quot;);
+    thread::sleep(Duration::from_secs(2));
+    num
+};
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Comparisons for Functions and closures syntax:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn  add_one_v1   (x: u32) -&gt; u32 { x + 1 }
+let add_one_v2 = |x: u32| -&gt; u32 { x + 1 };
+let add_one_v3 = |x|             { x + 1 };
+let add_one_v4 = |x|               x + 1  ;
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Closures will always have only one concrete type:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// FAIL: Closure inferred two different types of x, which is against the rules
+let example_closure = |x| x;
+
+let s = example_closure(String::from(&quot;hello&quot;));
+let n = example_closure(5);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Performing <em>memoization</em> or <em>lazy evaluation</em>:</p>
+<ul>
+<li>
+<p>We can create a struct that will hold the closure and the resulting value of calling the closure.</p>
+</li>
+<li>
+<p>The struct will execute the closure only if we need the resulting value, and it will cache the resulting value so the rest of our code doesn’t have to be responsible for saving and reusing the result.</p>
+</li>
+<li>
+<p>All closures implement at least one of the traits: <code>Fn</code>, <code>FnMut</code>, or <code>FnOnce</code>.</p>
+</li>
+<li>
+<p>Using this information, we can create a <code>Cacher</code></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Cacher will store a closure inside calculation
+// and the computed value inside value
+struct Cacher&lt;T&gt;
+where
+    T: Fn(u32) -&gt; u32,
+{
+    calculation: T,
+    value: Option&lt;u32&gt;,
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>The use of the memoization is that, we can store the closure, that contains computation which takes very long time to finish. Then we can save it's computed value inside the struct, so that we can reuse to computation (thereby preventing expensive computation again and again), as well as update the computed value whenever necessary.</p>
+</li>
+<li>
+<p>We'll need to write an implementation block to make the <code>Cacher</code> easier to use:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T&gt; Cacher&lt;T&gt;
+where
+    T: Fn(u32) -&gt; u32,
+{
+    fn new(calculation: T) -&gt; Cacher&lt;T&gt; {
+        Cacher {
+            calculation,
+            value: None
+        }
+    }
+
+    fn value(&amp;mut self, arg: u32) -&gt; u32 {
+        match self.value {
+            Some(v) =&gt; v,
+            None =&gt; {
+                let v = (self.calculation)(arg);
+                self.value = v;
+                v
+            }
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>The only limitation of this <code>Cacher</code> is that it assumes that, it'll only receive one value, that means even if we call the <code>value()</code> function multiple with different arguments, it'll still return the same value every time and that value will be the computed value when the closure was called for the first time. Here's the explanation:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut c = Cacher::new(|a| a);
+
+let v1 = c.value(1); // v1 = 1
+let v2 = c.value(2); // v2 = 1
+let v3 = c.value(3); // v3 = 1
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>So, here is a better version of the above cacher that can memorize all the arguments and their computed value inside a HashMap, which is also generic. You may refer it's implementation over <a href="https://gist.github.com/utkarshg6/c8a5cb39ef89b8f16fcce3098754c001">here</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Capturing the Environmet with closures:</p>
+<ul>
+<li>
+<p>You can't don the following thing using simple functions:</p>
+<pre><pre class="playground"><code class="language-rust">// FAIL: Functions can't capture their environment, hence x shouldn't live inside the function
+fn main() {
+    let x = 4;
+
+    fn equal_to_x(z: i32) -&gt; bool {
+        z == x
+    }
+
+    let y = 4;
+
+    assert!(equal_to_x(y));
+}</code></pre></pre>
+</li>
+<li>
+<p>But, you can easliy do this using closure:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 4;
+
+    let equal_to_x = |z| z == x;
+
+    let y = 4;
+
+    assert!(equal_to_x(y));
+}</code></pre></pre>
+</li>
+<li>
+<p>Closures can capture values from their environment in three ways, which directly map to the three ways a function can take a parameter: taking ownership, borrowing mutably, and borrowing immutably. These are encoded in the three Fn traits as follows:</p>
+<ul>
+<li><code>FnOnce</code> consumes the variables it captures from its enclosing scope, known as the closure’s environment. To consume the captured variables, the closure must take ownership of these variables and move them into the closure when it is defined. The Once part of the name represents the fact that the closure can’t take ownership of the same variables more than once, so it can be called only once.</li>
+<li><code>FnMut</code> can change the environment because it mutably borrows values.</li>
+<li><code>Fn</code> borrows values from the environment immutably.</li>
+</ul>
+</li>
+<li>
+<p>When you create a closure, Rust infers which trait to use based on how the closure uses the values from the environment. All closures implement <code>FnOnce</code> because they can all be called at least once. Closures that don’t move the captured variables also implement <code>FnMut</code>, and closures that don’t need mutable access to the captured variables also implement <code>Fn</code>. In Listing 13-12, the equal_to_x closure borrows x immutably (so equal_to_x has the Fn trait) because the body of the closure only needs to read the value in x.</p>
+</li>
+<li>
+<p>If you want to force the closure to take ownership of the values it uses in the environment, you can use the <code>move</code> keyword before the parameter list. This technique is mostly useful when passing a closure to a new thread to move the data so it’s owned by the new thread. The <code>move</code> closures may still implement Fn or FnMut, even though they capture variables by move. This is because the traits implemented by a closure type are determined by what the closure does with captured values, not how it captures them. The move keyword only specifies the latter.</p>
+</li>
+<li>
+<p>An example of <code>move</code>:</p>
+<pre><pre class="playground"><code class="language-rust">// FAIL: We tried to print x even though it is moved inside closure
+fn main() {
+    let x = vec![1, 2, 3];
+
+    let equal_to_x = move |z| z == x;
+
+    println!(&quot;can't use x here: {:?}&quot;, x);
+
+    let y = vec![1, 2, 3];
+
+    assert!(equal_to_x(y));
+}</code></pre></pre>
+</li>
+<li>
+<p>Most of the time when specifying one of the <code>Fn</code> trait bounds, you can start with <code>Fn</code> and the compiler will tell you if you need <code>FnMut</code> or <code>FnOnce</code> based on what happens in the closure body.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="iterators"><a class="header" href="#iterators">Iterators</a></h4>
+<ul>
+<li>
+<p>Iterators are lazy in rust, meaning they have no effect until you call methods that consume the iterator to use it up.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v1 = vec![1, 2, 3];
+
+let v1_iter = v1.iter(); // It won't do anything useful until called upon
+
+for val in v1_iter { // Now, the iterator is called upon and used
+    println!(&quot;Got: {}&quot;, val);
+}
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>To just get the next element stored in iterator:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v1 = vec![1, 2, 3];
+
+// Calling the next() method changes the state of iterator,
+// hence we'll need to use mut in this case
+let mut v1_iter = v1.iter();
+
+assert_eq!(v1_iter.next(), Some(&amp;1));
+assert_eq!(v1_iter.next(), Some(&amp;2));
+assert_eq!(v1_iter.next(), Some(&amp;3));
+assert_eq!(v1_iter.next(), None);
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Why is it required to use <code>mut</code> when using <code>next()</code>, but not when using <code>for</code> loop?</p>
+<ul>
+<li><code>next()</code> - Each call to <code>next</code> eats up an item from the iterator. Hence, we need to define it as <code>mut</code> to be able to do that.</li>
+<li><code>for</code> - The loop takes ownership of the iterator and made it mutable behind the scenes. Hence, we don't need to use <code>mut</code> there.</li>
+</ul>
+</li>
+<li>
+<p>Difference between <code>iter</code>, <code>into_iter</code>, and <code>iter_mut</code></p>
+<ul>
+<li>
+<p>They all return iterator, except the way they return differs. Here are the differences:</p>
+<ul>
+<li><code>into_iter</code>: It yields any of <code>T</code>, <code>&amp;T</code> or <code>&amp;mut T</code>, depending on the context.</li>
+<li><code>iter</code>: It yields <code>&amp;T</code>.</li>
+<li><code>iter_mut</code>: It yields <code>&amp;mut T</code>.</li>
+</ul>
+</li>
+<li>
+<p>For more details refer to this <a href="https://stackoverflow.com/questions/34733811/what-is-the-difference-between-iter-and-into-iter">stackoverflow answer</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Consuming Adaptors</code>: Some methods inside <code>Iterator</code> trait uses <code>next()</code>. It means those functions will also eat away the iterator, just like how <code>next()</code> does. Here's an example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v1 = vec![1, 2, 3];
+
+let v1_iter = v1.iter();
+
+let total: i32 = v1_iter.sum(); // sum() uses the next() and hence will eat away the iterator
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p><code>Iterator Adaptors</code>: Some methods inside <code>Iterator</code> allows you to change iterators into different kinds of iterators. It is also possible to use <code>Iterator</code>, <code>Enumerator</code>, <code>Map</code>, and <code>Filter</code> together. Rust has these functions inside the Iterator Trait.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v1: Vec&lt;u32&gt; = vec![0, 1, 2, 3, 4, 5];
+let iterator = v1.iter()
+                 .enumerate()
+                 .filter(|(i, val)| i % 2 == 0)
+                 .map(|(i, val)| val); // On it's own it won't do anything, because iterators are lazy
+
+// You can either print them one by one using for loop (remember it'll consume the iterator)
+for val in iterator {
+    println!(&quot;{}&quot;, val);
+}
+
+// Or you can collect them inside a vector, make sure you explicitly specify the type (`Vec&lt;_&gt;`) too.
+let new_vector: Vec&lt;_&gt; = iterator.collect();
+println!(&quot;New Vector: {:?}&quot;)
+<span class="boring">}</span></code></pre></pre>
+</li>
+<li>
+<p>Creating your own iterator:</p>
+<ul>
+<li>
+<p>You'll need to implement <code>Iterator</code> trait on your type.</p>
+</li>
+<li>
+<p>You'll only need to define one function, that is <code>next()</code>, it'll be sufficient.</p>
+<pre><pre class="playground"><code class="language-rust">struct Counter {
+    count: u32,
+}
+
+impl Counter {
+    fn new() -&gt; Self {
+        Self {
+            count: 0,
+        }
+    }
+}
+
+impl Iterator for Counter {
+    type Item = u32;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
+        if self.count &lt; 5 {
+            self.count += 1;
+            Some(self.count)
+        } else {
+            None
+        }
+    }
+}
+
+fn main() {
+    let counter = Counter::new();
+    for val in counter {
+        println!(&quot;{:?}&quot;, val);
+    }
+
+    // Since we have next() method we can use any default implementation of the Iterator trait
+    let sum: u32 = Counter::new()
+        .zip(Counter::new().skip(1)) // Skips first element only and generate pairs { (1,2) (2,3) (3,4) (4,5) } because (5,None) is ignored
+        .map(|(a, b)| a * b) // [2, 6, 12, 20]
+        .filter(|x| x % 3 == 0) // [6, 12]
+        .sum(); // 18
+}</code></pre></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Which is faster, <code>for</code> loop or <code>iterator adapters</code>?</p>
+<ul>
+<li>
+<p>Here are the benchmarks:</p>
+<pre><code class="language-zsh">test bench_search_for  ... bench:  19,620,300 ns/iter (+/- 915,700)
+test bench_search_iter ... bench:  19,234,900 ns/iter (+/- 657,200)
+</code></pre>
+</li>
+<li>
+<p>Iterators, although a high-level abstraction, get compiled down to roughly the same code as if you’d written the lower-level code yourself. Iterators are one of Rust’s <code>zero-cost abstractions</code>, which means that using the abstraction imposes no additional runtime overhead.</p>
+</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ch-05-medium-concepts/pg-03-lifetimes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../ch-05-medium-concepts/pg-05-smart-pointers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ch-05-medium-concepts/pg-03-lifetimes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../ch-05-medium-concepts/pg-05-smart-pointers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
